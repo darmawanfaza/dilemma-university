@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/> <meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Dilemma University - Beranda</title>
+<style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+  
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to bottom right, #f9f9f9, #e6f0ff);
+            display: flex;
+        }
+
+        .sidebar {
+            height: 100vh;
+            width: 220px;
+            background: linear-gradient(to bottom, #003366, #0059b3);
+            padding-top: 20px;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar a {
+            padding: 15px 20px;
+            text-decoration: none;
+            color: white;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #0073e6;
+        }
+
+        .main {
+            margin-left: 220px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        header {
+            background: linear-gradient(to right, #004d99, #0066cc);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 2em;
+            margin-top: 30px;
+            color: #003366;
+            text-shadow: 1px 1px 2px #ccc;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            flex: 1 1 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 3px solid #e6f0ff;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card h3 {
+            color: #0059b3;
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .gallery img {
+            width: 30%;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            color: #444;
+            font-weight: bold;
+        }
+
+        /* Form styles */
+        #registration {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f4f4f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #registration .section-title {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #003366;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            background-color: #0059b3;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #003366;
+        }
+
+        #faculties {
+            margin-top: 40px;
+        }
+
+        #faculties ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        #faculties ul li {
+            background-color: #e6f0ff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            font-size: 1.2em;
+            border: 1px solid #cce0ff;
+        }
+
+        #faculties ul li h3 {
+            color: #0059b3;
+        }
+
+        #fishContainer {
+            transition: transform 0.1s ease;
+        }
+
+        #fishResult {
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: float 2s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+            50% { transform: translate(-50%, -50%) translateY(-10px); }
+        }
+
+        .image-gallery img {
+            width: 100%;
+            max-width: 300px;
+            margin: 10px;
+            border-radius: 8px;
+        }
+
+        .technology-facts {
+            margin-top: 30px;
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .technology-facts ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .technology-facts ul li {
+            margin: 10px 0;
+        }
+
+        .technology-facts img {
+            width: 100%;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+  
+        .calculator {
+            background-color: #f4f4f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .calculator label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .calculator input, .calculator select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .calculator button {
+            background-color: #0059b3;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .calculator button:hover {
+            background-color: #003366;
+        }
+
+        .calculator-result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e6f0ff;
+            border-radius: 8px;
+            font-size: 18px;
+            display: none;
+        }
+
+        .testimonial-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 20px;
+            flex: 1 1 300px;
+        }
+
+        .testimonial-card .quote {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card .author {
+            font-weight: bold;
+            color: #0059b3;
+        }
+
+        .testimonial-card .position {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .dark-mode {
+            background: linear-gradient(to bottom right, #1a1a2e, #16213e);
+            color: #fff;
+        }
+        
+        .dark-mode .card {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+        }
+        
+        .dark-mode header {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+        }
+
+        
+        /* === Kontak Section === */
+        .contact-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #003366;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 50px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            margin-top: 5px;
+        }
+        
+        .contact-item h3 {
+            color: #003366;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .contact-item p {
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .contact-form h3 {
+            color: #003366;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #0059b3;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background: #003366;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+          .contact-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+    
+
+/* === Tambahan Styling oleh ChatGPT === */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+.card, .calculator, .testimonial-card, .contact-form, .contact-info {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover, .calculator:hover, .testimonial-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+@media (max-width: 768px) {
+    .card-container, .testimonial-container, .gallery {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+#fishContainer.spin {
+    animation: spin 1.5s ease-in-out;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(1080deg); }
+}
+footer.modern-footer {
+    background: #222;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+<div class="sidebar">
+<a href="#home">Home</a>
+<a href="#about">Tentang Kami</a>
+<a href="#courses">Program Studi</a>
+<a href="#faculties">Fakultas &amp; Jurusan</a>
+<a href="#science-tech">Sains &amp; Teknologi</a>
+<a href="#gallery">Galeri Kampus</a>
+<a href="#fishbowl">Undian Diskon</a>
+<a href="#calculator">Kalkulator Biaya</a>
+<a href="#testimonials">Testimoni</a>
+<a href="#registration">Pendaftaran</a>
+<a href="#contact">Kontak Kami</a>
+</div>
+<div class="main">
+<header id="home">
+<h1>Selamat Datang di Dilemma University</h1>
+<p>Pusat Inovasi di Bidang Sains dan Teknologi</p>
+</header>
+<section id="about">
+<h2>Tentang Dilemma University</h2>
+<p>Dilemma University adalah institusi pendidikan tinggi terkemuka di Indonesia yang berfokus pada pengembangan inovasi di bidang sains, teknologi, dan bisnis digital. Kami menyediakan berbagai program studi unggulan dan didukung oleh tenaga pengajar berpengalaman serta fasilitas modern.</p>
+</section>
+<section id="courses">
+<div class="section-title">Program Studi</div>
+<div class="card-container">
+<div class="card">
+<h3>Teknik Informatika</h3>
+<p>Pelajari pemrograman, pengembangan perangkat lunak, dan kecerdasan buatan.</p>
+</div>
+<div class="card">
+<h3>Teknik Elektro</h3>
+<p>Fokus pada sistem kelistrikan, elektronika, dan teknologi energi terbarukan.</p>
+</div>
+<div class="card">
+<h3>Fisika Terapan</h3>
+<p>Menghubungkan teori fisika dengan teknologi modern untuk menciptakan solusi nyata.</p>
+</div>
+</div>
+</section>
+<section id="faculties">
+<div class="section-title">Fakultas &amp; Jurusan</div>
+<ul>
+<li>
+<h3>Fakultas Teknik</h3>
+<p>Jurusan: Teknik Informatika, Teknik Elektro, Teknik Mesin</p>
+</li>
+<li>
+<h3>Fakultas Sains</h3>
+<p>Jurusan: Fisika Terapan, Bioteknologi, Kimia Terapan</p>
+</li>
+<li>
+<h3>Fakultas Ekonomi</h3>
+<p>Jurusan: Ekonomi Bisnis, Manajemen, Akuntansi</p>
+</li>
+</ul>
+</section>
+<section id="science-tech">
+<div class="section-title">Sains &amp; Teknologi</div>
+<p>Di Dilemma University, kami menawarkan berbagai riset dan pengembangan di bidang sains dan teknologi yang bertujuan untuk memberikan solusi inovatif bagi masyarakat.</p>
+<div class="section-title">Fakta Menarik Sains dan Teknologi</div>
+<div class="card-container">
+<div class="card">
+<img alt="AI" src="https://images.pexels.com/photos/8849295/pexels-photo-8849295.jpeg"/>
+<h3>AI Bisa Mengubah Musik</h3>
+<p>Kecerdasan buatan kini mampu menciptakan musik secara otomatis, meniru gaya komposer terkenal!</p>
+</div>
+<div class="card">
+<img alt="Quantum Computing" src="https://images.pexels.com/photos/18475683/pexels-photo-18475683.jpeg"/>
+<h3>Quantum Computing</h3>
+<p>Komputer kuantum dapat menyelesaikan masalah yang butuh ribuan tahun dalam hitungan detik!</p>
+</div>
+<div class="card">
+<img alt="Robot Medis" src="https://images.pexels.com/photos/4021775/pexels-photo-4021775.jpeg"/>
+<h3>Robot Medis</h3>
+<p>Robot kini bisa membantu operasi rumit dengan tingkat presisi tinggi, mengurangi risiko kesalahan medis.</p>
+</div>
+</div>
+</section>
+<section id="gallery">
+<div class="section-title">Galeri Kampus</div>
+<div class="gallery">
+<img alt="Gedung Kampus" src="https://images.pexels.com/photos/2982449/pexels-photo-2982449.jpeg"/>
+<img alt="Perpustakaan" src="https://images.pexels.com/photos/1290141/pexels-photo-1290141.jpeg"/>
+<img alt="Lab Sains" src="https://images.pexels.com/photos/248152/pexels-photo-248152.jpeg"/>
+</div>
+</section>
+<section class="roulette-container" id="fishbowl" style="background-color: #4BC0C0;">
+<div class="section-title">Undian Fishbowl Diskon</div>
+<div id="fishContainer" style="position: relative; height: 300px; margin: 20px auto;">
+<img alt="Fishbowl" src="https://cdn-icons-png.flaticon.com/512/3081/3081985.png" style="height: 100%; display: block; margin: 0 auto;"/>
+<div id="fishResult" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; color: #FF5733;"></div>
+</div>
+<button class="roulette-button" onclick="drawFish()">Ambil Undian</button>
+<div class="roulette-result" id="fishbowlResult"></div>
+</section>
+<section id="calculator">
+<div class="section-title">Kalkulator Uang Kuliah</div>
+<div class="calculator">
+<label for="faculty">Fakultas:</label>
+<select id="faculty">
+<option value="teknik">Fakultas Teknik (Rp 12.000.000/semester)</option>
+<option value="sains">Fakultas Sains (Rp 10.000.000/semester)</option>
+<option value="ekonomi">Fakultas Ekonomi (Rp 9.000.000/semester)</option>
+</select>
+<label for="semester">Jumlah Semester:</label>
+<input id="semester" max="14" min="1" type="number" value="8"/>
+<label for="discount">Potongan (dari roulette):</label>
+<input id="discount" placeholder="Klik 'Ambil Potongan'" type="text"/>
+<button onclick="getDiscount()" type="button">Ambil Potongan</button>
+<button onclick="calculateTuition()" type="button">Hitung Total Biaya</button>
+<div class="calculator-result" id="calculatorResult"></div>
+</div>
+</section>
+<section id="testimonials">
+<div class="section-title">Testimoni Alumni</div>
+<div class="testimonial-container">
+<div class="testimonial-card">
+<div class="quote">"Dilemma University memberikan saya dasar yang kuat di bidang teknologi. Kini saya bekerja di perusahaan multinasional sebagai software engineer."</div>
+<div class="author">Budi Santoso</div>
+<div class="position">Software Engineer, TechCorp</div>
+</div>
+<div class="testimonial-card">
+<div class="quote">"Fasilitas laboratorium yang lengkap dan dosen yang berpengalaman membuat saya siap menghadapi dunia kerja setelah lulus."</div>
+<div class="author">Ani Wijaya</div>
+<div class="position">Peneliti, Lembaga Sains Nasional</div>
+</div>
+<div class="testimonial-card">
+<div class="quote">"Program magang yang disediakan universitas membantu saya mendapatkan pengalaman praktis sebelum lulus."</div>
+<div class="author">Rudi Hermawan</div>
+<div class="position">Manajer Proyek, FinTech Startup</div>
+</div>
+</div>
+</section>
+<section id="registration">
+<div class="section-title">Formulir Pendaftaran</div>
+<form action="#" method="POST">
+<label for="firstName">Nama Depan:</label>
+<input id="firstName" name="firstName" placeholder="Masukkan Nama Depan" required="" type="text"/>
+<label for="lastName">Nama Belakang:</label>
+<input id="lastName" name="lastName" placeholder="Masukkan Nama Belakang" required="" type="text"/>
+<label for="email">Email:</label>
+<input id="email" name="email" placeholder="Masukkan Email" required="" type="email"/>
+<button class="submit-button" type="submit">Daftar Sekarang</button>
+</form>
+</section>
+<section class="contact-section" id="contact">
+<div class="contact-container">
+<h2 class="section-title">Hubungi Kami</h2>
+<p class="section-subtitle">Kami siap membantu Anda dengan pertanyaan atau kerja sama.</p>
+<div class="contact-grid">
+<!-- Informasi Kontak -->
+<div class="contact-info">
+<div class="contact-item">
+<i class="fas fa-map-marker-alt"></i>
+<div>
+<h3>Lokasi Kampus</h3>
+<p>Jl. Pendidikan No. 123, Jakarta Selatan, Indonesia</p>
+</div>
+</div>
+<div class="contact-item">
+<i class="fas fa-envelope"></i>
+<div>
+<h3>Email</h3>
+<p>info@dilemmauniversity.ac.id</p>
+<p>admissions@dilemmauniversity.ac.id</p>
+</div>
+</div>
+<div class="contact-item">
+<i class="fas fa-phone-alt"></i>
+<div>
+<h3>Telepon</h3>
+<p>+62 21 1234 5678 (Hunting)</p>
+<p>+62 812 3456 7890 (WhatsApp)</p>
+</div>
+</div>
+</div>
+<!-- Form Kontak -->
+<div class="contact-form">
+<h3>Kirim Pesan</h3>
+<form>
+<div class="form-group">
+<input placeholder="Nama Lengkap" required="" type="text"/>
+</div>
+<div class="form-group">
+<input placeholder="Email" required="" type="email"/>
+</div>
+<div class="form-group">
+<input placeholder="Subjek" type="text"/>
+</div>
+<div class="form-group">
+<textarea placeholder="Pesan Anda" rows="5"></textarea>
+</div>
+<button class="submit-btn" type="submit">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+</form>
+</div>
+</div>
+</div>
+</section></div>
+<audio id="tickSound" preload="auto" src="https://www.soundjay.com/button/sounds/button-16.mp3"></audio>
+<button id="darkModeToggle" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: #0059b3; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer;">
+        🌓 Dark Mode
+    </button><script>
+        const discounts = ['10%', '20%', '30%', '40%', '50%', '60%', '70%', '75%'];
+        let availableDiscounts = [...discounts];
+        let isDrawing = false;
+
+        function drawFish() {
+            if (isDrawing) return;
+            if (availableDiscounts.length === 0) {
+                document.getElementById("fishbowlResult").textContent = "Semua diskon sudah diambil!";
+                return;
+            }
+
+            isDrawing = true;
+            document.getElementById("fishResult").textContent = "?";
+
+            // Animasi pengocokan
+            let shakeCount = 0;
+            const fishContainer = document.getElementById("fishContainer");
+            const shakeInterval = setInterval(() => {
+                fishContainer.style.transform = `rotate(${Math.random() * 10 - 5}deg)`;
+                shakeCount++;
+                if (shakeCount > 10) {
+                    clearInterval(shakeInterval);
+                    fishContainer.style.transform = "rotate(0deg)";
+                    
+                    // Ambil diskon acak
+                    const randomIndex = Math.floor(Math.random() * availableDiscounts.length);
+                    const selectedDiscount = availableDiscounts[randomIndex];
+                    
+                    // Tampilkan hasil
+                    document.getElementById("fishResult").textContent = selectedDiscount;
+                    document.getElementById("fishbowlResult").textContent = 
+                        `Selamat! Anda mendapatkan diskon ${selectedDiscount}`;
+                    
+                    // Hapus diskon yang sudah diambil
+                    availableDiscounts = availableDiscounts.filter(d => d !== selectedDiscount);
+                    isDrawing = false;
+                }
+            }, 100);
+        }
+
+        let time = 5 * 60 * 60; // 5 jam dalam detik
+        function updateCountdown() {
+            const hours = Math.floor(time / 3600);
+            const minutes = Math.floor((time % 3600) / 60);
+            const seconds = time % 60;
+            document.getElementById('timer').textContent = 
+                `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            time--;
+            if (time < 0) {
+                document.getElementById('countdown').innerHTML = "Pendaftaran telah ditutup!";
+                clearInterval(countdownInterval);
+            }
+        }
+        
+        const countdownInterval = setInterval(updateCountdown, 1000);
+        updateCountdown(); // Jalankan segera
+
+        // Fungsi untuk mengambil potongan dari roulette
+        function getDiscount() {
+            const resultText = document.getElementById("fishbowlResult").textContent;
+            if (resultText.includes("diskon")) {
+                const discount = resultText.match(/\d+%/)[0];
+                document.getElementById("discount").value = discount;
+            } else {
+                alert("Silakan ambil undian terlebih dahulu untuk mendapatkan diskon!");
+            }
+        }
+
+        // Fungsi untuk menghitung total biaya kuliah
+        function calculateTuition() {
+            const faculty = document.getElementById("faculty").value;
+            const semesters = parseInt(document.getElementById("semester").value);
+            const discountInput = document.getElementById("discount").value;
+            
+            // Harga per semester
+            let pricePerSemester;
+            switch(faculty) {
+                case "teknik": pricePerSemester = 12000000; break;
+                case "sains": pricePerSemester = 10000000; break;
+                case "ekonomi": pricePerSemester = 9000000; break;
+                default: pricePerSemester = 0;
+            }
+            
+            // Hitung potongan
+            let discount = 0;
+            if (discountInput) {
+                discount = parseInt(discountInput) / 100;
+            }
+            
+            // Hitung total
+            const totalBeforeDiscount = pricePerSemester * semesters;
+            const totalDiscount = totalBeforeDiscount * discount;
+            const totalAfterDiscount = totalBeforeDiscount - totalDiscount;
+            
+            // Tampilkan hasil
+            const resultDiv = document.getElementById("calculatorResult");
+            resultDiv.style.display = "block";
+            resultDiv.innerHTML = `
+                <strong>Rincian Biaya:</strong><br>
+                Biaya per semester: Rp ${pricePerSemester.toLocaleString('id-ID')}<br>
+                Jumlah semester: ${semesters}<br>
+                Total sebelum potongan: Rp ${totalBeforeDiscount.toLocaleString('id-ID')}<br>
+                Potongan ${discount * 100}%: Rp ${totalDiscount.toLocaleString('id-ID')}<br>
+                <strong>Total biaya kuliah: Rp ${totalAfterDiscount.toLocaleString('id-ID')}</strong>
+            `;
+        }
+
+        // Dark Mode Toggle
+        document.getElementById('darkModeToggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            this.textContent = document.body.classList.contains('dark-mode') ? '🌞 Light Mode' : '🌓 Dark Mode';
+        });
+    
+// Tambahan efek spinning pada fishContainer setelah drawFish
+const fishEl = document.getElementById("fishContainer");
+if (fishEl) {
+    fishEl.classList.add("spin");
+    setTimeout(() => {
+        fishEl.classList.remove("spin");
+    }, 1500);
+}
+</script>
+<footer class="modern-footer">© 2025 Dilemma University. All rights reserved.</footer></body>
+</html>
